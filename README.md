@@ -224,8 +224,5 @@ Customer scores should support—not replace—human decision-making. Validate m
 ## Author
 
 **Mohamed Riyaz S.**  
-Computer Science & Engineering | Business Analytics
-
-## License
-
-MIT License. See [LICENSE](LICENSE).
+Integrated M.Tech, Computer Science and Engineering (Business Analytics)  
+VIT Chennai
