@@ -3,8 +3,6 @@
 
 Customer360 is an end-to-end customer analytics platform that uses machine learning and behavioural analytics to estimate customer lifetime value (CLV), identify customers at risk of churn, segment customer behaviour, and recommend targeted retention actions. It combines a reproducible Python analytics pipeline with an interactive Streamlit dashboard and a FastAPI service.
 
-> **Data notice:** The included dataset is synthetic and generated for demonstration. Model results are illustrative and must not be presented as validated performance on real customers.
-
 ## Key capabilities
 
 - **Customer Lifetime Value Prediction:** Estimate future customer value from historical purchase behaviour, recency, frequency, monetary value, tenure, and engagement features.
@@ -117,77 +115,36 @@ Customer360/
 └── pyproject.toml
 ```
 
-## Quick start
+## **Quick Start**
 
-### 1. Create an environment
+- Create and activate a Python virtual environment.
+- Install the required dependencies using `requirements.txt`.
+- Generate the sample customer dataset using the data generation script.
+- Execute the end-to-end pipeline to preprocess data and train machine-learning models.
+- Generate model artifacts and customer predictions.
+- Access the processed datasets and trained outputs in the `artifacts/` and `data/processed/` directories.
 
-```bash
-python -m venv .venv
-# Windows PowerShell
-.venv\Scripts\Activate.ps1
-# macOS / Linux
-source .venv/bin/activate
-```
+## **API Usage – Customer Intelligence & Prediction**
 
-### 2. Install dependencies
+The `/predict` API endpoint accepts customer behavioural, transactional, and engagement data through a POST request to generate actionable customer intelligence.
 
-```bash
-pip install -r requirements.txt
-```
+**Key input parameters:**
 
-### 3. Generate the sample dataset
+- **Recency:** Days since the customer's last purchase.
+- **Frequency:** Number of customer transactions.
+- **Monetary Value:** Total customer spending.
+- **Tenure:** Duration of the customer relationship.
+- **Average Order Value:** Average spending per transaction.
+- **Support Tickets:** Number of customer support interactions.
+- **Engagement Score:** Customer engagement level.
 
-```bash
-python scripts/generate_data.py
-```
+**Expected API outputs:**
 
-The generator writes `data/sample/customers.csv`.
+- Predicted Customer Lifetime Value (CLV).
+- Customer churn probability.
+- Customer risk classification.
+- AI-driven customer retention recommendations.
 
-### 4. Train models and create outputs
-
-```bash
-python scripts/run_pipeline.py
-```
-
-This creates model artifacts and scored customer data under `artifacts/` and `data/processed/`.
-
-### 5. Launch the dashboard
-
-```bash
-streamlit run dashboard/app.py
-```
-
-### 6. Launch the API
-
-```bash
-uvicorn api.main:app --reload
-```
-
-Open `http://127.0.0.1:8000/docs` for interactive API documentation.
-
-## Run tests
-
-```bash
-pytest -q
-```
-
-## API example
-
-After starting the API, send a request to `POST /predict`:
-
-```json
-{
-  "recency_days": 18,
-  "frequency": 12,
-  "monetary_value": 1850.0,
-  "tenure_months": 14,
-  "avg_order_value": 154.17,
-  "support_tickets": 1,
-  "engagement_score": 0.72
-}
-```
-
-The API returns predicted CLV, churn probability, a risk label, and a retention recommendation. Train the pipeline before starting the API.
 
 ## Methodology
 
