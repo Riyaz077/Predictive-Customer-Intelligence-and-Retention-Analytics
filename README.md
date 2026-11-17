@@ -1,62 +1,243 @@
-# Customer360
-## AI-Based Customer Lifetime Value Prediction and Retention Intelligence System
+# AI-Based Customer Lifetime Value Prediction and Retention Intelligence System
 
-Customer360 is an end-to-end customer analytics platform that uses machine learning and behavioural analytics to estimate customer lifetime value (CLV), identify customers at risk of churn, segment customer behaviour, and recommend targeted retention actions. It combines a reproducible Python analytics pipeline with an interactive Streamlit dashboard and a FastAPI service.
+**Predict Customer Value. Identify Churn Risk. Drive Smarter Retention Strategies.**
 
-## Key capabilities
+## Project Overview
 
-- **Customer Lifetime Value Prediction:** Estimate future customer value from historical purchase behaviour, recency, frequency, monetary value, tenure, and engagement features.
-- **Churn Risk Prediction:** Estimate the probability that a customer will become inactive/churn within the defined observation framework.
-- **Customer Segmentation:** Group customers using behavioural and value-related features with K-Means clustering.
-- **Retention Intelligence:** Generate transparent, rule-based retention suggestions using CLV, churn risk, and customer segment.
-- **Explainable outputs:** Show the strongest model features and human-readable reason codes where available.
-- **Interactive dashboard:** Explore KPIs, customer segments, CLV distributions, churn risk, and individual customer profiles.
-- **API access:** Serve customer-level predictions through FastAPI.
+An end-to-end customer analytics system designed to predict Customer Lifetime Value (CLV), identify potential customer churn, analyse behavioural patterns, and support targeted customer retention strategies using Machine Learning and Data Analytics. The system integrates customer value prediction, churn risk classification, and behavioural segmentation to understand customer purchasing patterns and identify opportunities for improved customer engagement and retention. It leverages machine learning algorithms, including regression models, classification techniques, and K-Means clustering, to estimate future customer value, assess churn probability, and group customers based on their behavioural characteristics.
 
-## Architecture
+An interactive **Streamlit dashboard** and **FastAPI-based REST API** provide capabilities for customer analytics, predictive insights, customer profiling, and intelligent retention recommendations.
 
-```text
-Synthetic / Business Customer Data
-              |
-              v
-     Data Validation & Cleaning
-              |
-              v
-       Feature Engineering
-              |
-       +------+------+
-       |             |
-       v             v
-  CLV Regression  Churn Classification
-       |             |
-       +------+------+
-              |
-              v
-    Customer Segmentation
-              |
-              v
-  Retention Rules & Recommendations
-              |
-       +------+------+
-       |             |
-       v             v
- Streamlit UI     FastAPI Service
+## Key Objectives
+
+- Predict customer lifetime value using historical purchasing behaviour.
+- Identify customers with a high probability of churn.
+- Analyse customer purchasing patterns and engagement.
+- Segment customers based on behavioural and monetary characteristics.
+- Develop targeted retention strategies using predictive insights.
+- Support data-driven customer relationship management decisions.
+
+## Key Capabilities
+
+| Feature | Description |
+|---|---|
+| Customer Lifetime Value Prediction | Estimate future customer value using historical behavioural and transactional data. |
+| Churn Risk Prediction | Identify customers who are likely to become inactive. |
+| Customer Segmentation | Group customers using K-Means clustering. |
+| RFM Analysis | Analyse Recency, Frequency, and Monetary value. |
+| Retention Intelligence | Generate rule-based customer retention recommendations. |
+| Behavioural Analytics | Examine customer purchasing and engagement patterns. |
+| Explainable Insights | Provide important model features and human-readable reason codes. |
+| Interactive Dashboard | Explore customer KPIs, CLV distributions, churn risk, and customer segments. |
+| REST API | Serve customer-level predictions through FastAPI. |
+
+## System Architecture
+
+The system follows an integrated customer analytics workflow, combining data preprocessing, predictive modelling, behavioural segmentation, and retention intelligence.
+
+```mermaid
+flowchart TD
+    A["Customer Transaction & Behavioural Data"]
+    A --> B["Data Validation & Cleaning"]
+    B --> C["Feature Engineering"]
+    
+    C --> D["CLV Regression Model"]
+    C --> E["Churn Classification Model"]
+    
+    D --> F["Customer Value Prediction"]
+    E --> G["Churn Probability"]
+    
+    F --> H["Customer Segmentation"]
+    G --> H
+    
+    H --> I["Retention Intelligence Engine"]
+    I --> J["Customer Insights & Recommendations"]
+    
+    J --> K["Streamlit Dashboard"]
+    J --> L["FastAPI REST Service"]
 ```
 
-## Technology stack
+## Machine Learning Architecture
 
-- Python, Pandas, NumPy
-- Scikit-learn
-- Matplotlib
-- Streamlit
-- FastAPI and Uvicorn
-- Joblib
-- Pytest
+The system integrates multiple machine learning approaches to analyse customer value, churn behaviour, and customer segments.
 
-## Repository structure
+### Customer Lifetime Value Prediction
+
+A regression-based approach estimates future customer value using historical transaction and behavioural features.
+
+### Churn Risk Prediction
+
+A classification-based approach estimates the probability of customer churn using purchasing patterns, engagement, tenure, and customer activity.
+
+### Customer Segmentation
+
+K-Means clustering groups customers based on scaled behavioural and monetary features to identify distinct customer segments.
+
+### Retention Intelligence
+
+A transparent rule-based recommendation engine combines predicted CLV, churn probability, and customer segments to generate targeted retention suggestions.
+
+## Customer Intelligence Indicators
+
+The system analyses multiple customer-level indicators:
+
+- Recency – Days since the last purchase.
+- Frequency – Number of customer transactions.
+- Monetary Value – Total customer spending.
+- Tenure – Duration of the customer relationship.
+- Average Order Value – Average spending per transaction.
+- Support Tickets – Number of customer support interactions.
+- Engagement Score – Measure of customer engagement.
+
+These indicators support customer profiling, behavioural analysis, value estimation, and churn risk assessment.
+
+## Technology Stack
+
+| Category | Technologies |
+|---|---|
+| Programming | Python |
+| Data Processing | Pandas, NumPy |
+| Machine Learning | Scikit-learn |
+| Predictive Analytics | Regression and Classification Models |
+| Customer Segmentation | K-Means Clustering |
+| Statistical Analysis | RFM Analysis |
+| Visualization | Matplotlib |
+| Dashboard | Streamlit |
+| Backend | FastAPI, Uvicorn |
+| Model Management | Joblib |
+| Testing | Pytest |
+| Development | Jupyter Notebook, VS Code |
+| Version Control | Git, GitHub |
+
+## Methodology
+
+1. **Data Generation & Collection** – Generate or load customer-level transactional and behavioural data.
+2. **Data Preprocessing** – Validate data types, handle missing values, and check data ranges.
+3. **Exploratory Data Analysis** – Examine customer distributions, purchasing behaviour, and engagement patterns.
+4. **Feature Engineering** – Develop RFM, tenure, average order value, and engagement features.
+5. **CLV Prediction** – Train regression models to estimate customer lifetime value.
+6. **Churn Prediction** – Develop classification models to estimate customer churn probability.
+7. **Customer Segmentation** – Apply K-Means clustering to identify behavioural customer groups.
+8. **Retention Intelligence** – Generate customer-specific retention recommendations.
+9. **Model Evaluation** – Assess predictive performance using appropriate evaluation metrics.
+10. **Dashboard & API Integration** – Present customer intelligence through an interactive dashboard and REST API.
+
+## Model Evaluation
+
+The system evaluates predictive performance using appropriate regression and classification metrics.
+
+### CLV Regression Metrics
+
+| Metric | Purpose |
+|---|---|
+| MAE | Measures average absolute prediction error. |
+| RMSE | Penalizes larger prediction errors. |
+| R² Score | Measures the proportion of variance explained by the model. |
+
+### Churn Classification Metrics
+
+| Metric | Purpose |
+|---|---|
+| Accuracy | Overall classification correctness. |
+| Precision | Proportion of predicted churn cases that are actual churn cases. |
+| Recall | Proportion of actual churn cases correctly identified. |
+| F1-Score | Balance between precision and recall. |
+| ROC-AUC | Measures classification ranking performance. |
+| Confusion Matrix | Evaluates correct and incorrect classifications. |
+
+*Model performance should be established using properly separated validation and test datasets. Synthetic-data results should not be interpreted as proof of real-world predictive effectiveness.*
+
+## API Usage – Customer Intelligence & Prediction
+
+The FastAPI service provides a `/predict` endpoint that accepts customer behavioural, transactional, and engagement information through a POST request.
+
+### Key Input Parameters
+
+- **Recency:** Days since the customer's last purchase.
+- **Frequency:** Number of customer transactions.
+- **Monetary Value:** Total customer spending.
+- **Tenure:** Duration of the customer relationship.
+- **Average Order Value:** Average spending per transaction.
+- **Support Tickets:** Number of customer support interactions.
+- **Engagement Score:** Customer engagement level.
+
+### Expected API Outputs
+
+- Predicted Customer Lifetime Value.
+- Customer churn probability.
+- Customer risk classification.
+- Customer segment identification.
+- Retention recommendations.
+
+## Installation & Quick Start
+
+**1. Clone the repository**
+
+```bash
+git clone <your-repository-url>
+cd <repository-folder>
+```
+
+**2. Create a virtual environment**
+
+```bash
+python -m venv venv
+```
+
+**3. Activate the environment**
+
+Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+Linux / macOS:
+
+```bash
+source venv/bin/activate
+```
+
+**4. Install dependencies**
+
+```bash
+pip install -r requirements.txt
+```
+
+**5. Generate sample customer data**
+
+```bash
+python scripts/generate_data.py
+```
+
+**6. Execute the analytics pipeline**
+
+```bash
+python scripts/run_pipeline.py
+```
+
+**7. Launch the Streamlit dashboard**
+
+```bash
+streamlit run dashboard/app.py
+```
+
+**8. Start the FastAPI backend**
+
+```bash
+uvicorn api.main:app --reload
+```
+
+API documentation:
+
+`http://127.0.0.1:8000/docs`
+
+*Ensure the commands and application paths match the actual repository implementation.*
+
+## Repository Structure
 
 ```text
-Customer360/
+Customer_Analytics/
 ├── api/
 │   └── main.py
 ├── config/
@@ -95,14 +276,15 @@ Customer360/
 ├── scripts/
 │   ├── generate_data.py
 │   └── run_pipeline.py
-├── src/customer360/
-│   ├── __init__.py
-│   ├── data.py
-│   ├── features.py
-│   ├── models.py
-│   ├── segmentation.py
-│   ├── retention.py
-│   └── pipeline.py
+├── src/
+│   └── customer_analytics/
+│       ├── __init__.py
+│       ├── data.py
+│       ├── features.py
+│       ├── models.py
+│       ├── segmentation.py
+│       ├── retention.py
+│       └── pipeline.py
 ├── tests/
 │   ├── test_features.py
 │   └── test_retention.py
@@ -115,71 +297,28 @@ Customer360/
 └── pyproject.toml
 ```
 
-## **Quick Start**
+## Future Enhancements & Roadmap
 
-- Create and activate a Python virtual environment.
-- Install the required dependencies using `requirements.txt`.
-- Generate the sample customer dataset using the data generation script.
-- Execute the end-to-end pipeline to preprocess data and train machine-learning models.
-- Generate model artifacts and customer predictions.
-- Access the processed datasets and trained outputs in the `artifacts/` and `data/processed/` directories.
+- Implement advanced time-aware and probabilistic CLV prediction.
+- Introduce uplift modelling to estimate the incremental impact of retention campaigns.
+- Integrate CRM and e-commerce data through authorized data connectors.
+- Implement model monitoring, drift detection, and automated retraining.
+- Integrate SHAP-based model explainability.
+- Develop customer campaign performance and A/B testing analytics.
+- Expand customer segmentation using advanced clustering techniques.
+- Introduce scalable database integration and cloud deployment.
 
-## **API Usage – Customer Intelligence & Prediction**
+## Responsible Use & Limitations
 
-The `/predict` API endpoint accepts customer behavioural, transactional, and engagement data through a POST request to generate actionable customer intelligence.
-
-**Key input parameters:**
-
-- **Recency:** Days since the customer's last purchase.
-- **Frequency:** Number of customer transactions.
-- **Monetary Value:** Total customer spending.
-- **Tenure:** Duration of the customer relationship.
-- **Average Order Value:** Average spending per transaction.
-- **Support Tickets:** Number of customer support interactions.
-- **Engagement Score:** Customer engagement level.
-
-**Expected API outputs:**
-
-- Predicted Customer Lifetime Value (CLV).
-- Customer churn probability.
-- Customer risk classification.
-- AI-driven customer retention recommendations.
-
-
-## Methodology
-
-1. Generate or load customer-level behavioural data.
-2. Validate data types, missing values, and ranges.
-3. Engineer RFM and engagement features.
-4. Train a regression model for CLV estimation.
-5. Train a classification model for churn-risk estimation.
-6. Cluster customers using scaled behavioural features.
-7. Apply transparent retention rules.
-8. Evaluate models and inspect outputs.
-9. Present insights in the dashboard and API.
-
-## Evaluation
-
-The pipeline reports:
-- CLV regression: MAE, RMSE, and R².
-- Churn classification: ROC-AUC, precision, recall, F1-score, and confusion matrix.
-
-Use a chronological or otherwise leakage-aware split when adapting this project to production data. The demonstration data is synthetic; high scores on it do not establish real-world effectiveness.
-
-## Responsible use
-
-Customer scores should support—not replace—human decision-making. Validate models for bias, monitor drift, protect personal information, obtain appropriate consent, and avoid using sensitive attributes or proxies for unfair treatment. Do not upload real customer data to a public repository.
-
-## Roadmap
-
-- Add time-aware CLV modelling and probabilistic customer value.
-- Add uplift modelling to estimate incremental retention campaign impact.
-- Integrate CRM and commerce data through governed connectors.
-- Add model monitoring, drift detection, and retraining workflows.
-- Add SHAP-based explanations and campaign experiment tracking.
+- Use synthetic, public, or explicitly authorized customer data.
+- Do not upload confidential customer or transactional information to public repositories.
+- Validate models for bias and monitor prediction drift.
+- Avoid using sensitive personal attributes or proxies for unfair customer treatment.
+- Protect personal information and obtain appropriate consent.
+- Treat predictive scores as decision-support indicators rather than definitive judgments about customers.
 
 ## Author
 
 **Mohamed Riyaz S.**  
-Integrated M.Tech, Computer Science and Engineering (Business Analytics)  
-VIT Chennai
+Integrated M.Tech – Computer Science and Engineering (Business Analytics)  
+Vellore Institute of Technology (VIT), Chennai
